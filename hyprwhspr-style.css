@@ -1,0 +1,23 @@
+/* hyprwhspr Minimal Waybar Styling */
+
+#custom-hyprwhspr {
+  min-width: 12px;
+  margin: 0 7.5px;
+  font-size: 12px;
+}
+
+/* Active state - normal text color, no special highlighting */
+#custom-hyprwhspr.active {
+  color: inherit;
+}
+
+/* Inactive state - slightly dimmed */
+#custom-hyprwhspr.inactive {
+  opacity: 0.7;
+}
+
+/* Error states - subtle indication only */
+#custom-hyprwhspr.error,
+#custom-hyprwhspr.unavailable {
+  opacity: 0.5;
+}
