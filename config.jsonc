@@ -34,12 +34,7 @@
       "mpd": "󰎆",
       "brave": " ",
       "mpv": "🎵"
-    },
-    "status-icons": {
-      "paused": "⏸",
-      "playing": "▶",
-      "stopped": "⏹"
-    },
+    }, 
     "on-click": "playerctl play-pause",
     "on-click-right": "playerctl next",
     "on-click-middle": "playerctl previous",
