@@ -5,7 +5,7 @@
   "spacing": 0,
   "height": 26,
   "modules-left": ["custom/omarchy", "hyprland/workspaces","custom/nightlight","hyprland/window"],
-  "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator"],
+  "modules-center": ["clock", "custom/update", "custom/screenrecording-indicator","custom/privacydots"],
   "modules-right": [
   "mpris",
     "group/tray-expander",
@@ -44,9 +44,21 @@
     "tooltip-format": "{player}: {title} by {artist}\nAlbum: {album}\nVolume: {volume}%"
   },
 
+  //-------------------------------------------MIDDLE SESSION CUSTOM CODE
+  
+
+    "custom/privacydots": {
+        "exec": "~/.config/waybar/Scripts/privacydots.sh",
+        "return-type": "json",
+        "interval": 3,
+        "format": "{text}",
+        "tooltip": true,
+        "escape": false,
+        "markup": "pango"
+    },
 
 
-  //-------------------------------------------TERMINAL
+  //-------------------------------------------RIGHT SESSION CUSTOM CODE
 
 
 
