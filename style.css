@@ -1,5 +1,4 @@
 @import "../omarchy/current/theme/waybar.css";
-@import "hyprwhspr-style.css";
 
 * {
   background-color: @background;
@@ -90,6 +89,14 @@ tooltip {
        1px -1px 0 #000000,
       -1px  1px 0 #000000,
        1px  1px 0 #000000; */
+}
+
+#cpu.warning, #memory.warning {
+    color: #f9e2af;
+}
+
+#cpu.critical, #memory.critical {
+    color: #f38ba8;
 }
 
 

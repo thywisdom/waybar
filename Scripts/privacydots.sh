@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # privacy dots for Waybar
-# mic:  green, cam: orange, location: blue
+# mic: green, cam: orange
 
 set -euo pipefail
 
@@ -11,7 +11,6 @@ DBUS_SEND="${DBUS_SEND:-dbus-send}"
 
 mic=0
 cam=0
-loc=0
 
 # mic & camera
 if command -v "$PW_DUMP_CMD" >/dev/null 2>&1 && command -v "$JQ_BIN" >/dev/null 2>&1; then
@@ -48,13 +47,9 @@ if command -v "$PW_DUMP_CMD" >/dev/null 2>&1 && command -v "$JQ_BIN" >/dev/null 
 
 fi
 
-# location
-# add location here
-
 # Colors
 green="#30D158"  # mic
 orange="#FF9F0A" # cam
-blue="#0A84FF"   # location
 grey="#555555"   # off
 
 dot() {
@@ -66,18 +61,12 @@ dot() {
   fi
 }
 
-text="$(dot "$mic" "$green") $(dot "$cam" "$orange") $(dot "$loc" "$blue")"
-tooltip="Mic: $([[ $mic -eq 1 ]] && echo on || echo off) | Cam: $([[ $cam -eq 1 ]] && echo on || echo off) | Location: $([[ $loc -eq 1 ]] && echo on || echo off)"
+text="$(dot "$mic" "$green") $(dot "$cam" "$orange")"
+tooltip="Mic: $([[ $mic -eq 1 ]] && echo on || echo off) | Cam: $([[ $cam -eq 1 ]] && echo on || echo off)"
 
 classes="privacydot"
 [[ $mic -eq 1 ]] && classes="$classes mic-on" || classes="$classes mic-off"
 [[ $cam -eq 1 ]] && classes="$classes cam-on" || classes="$classes cam-off"
-[[ $loc -eq 1 ]] && classes="$classes loc-on" || classes="$classes loc-off"
-
-#printf '{"text":"%s","tooltip":"%s","class":"%s"}\n' "$text" "$tooltip" "$classes"
-
-text_escaped="${text//#/\\u0023}"
-tooltip_escaped="${tooltip//#/\\u0023}"
 
 jq -c -n --arg text "$text" --arg tooltip "$tooltip" --arg class "$classes" \
   '{text:$text, tooltip:$tooltip, class:$class}'
