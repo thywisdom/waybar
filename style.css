@@ -1,14 +1,22 @@
 @import "../omarchy/current/theme/waybar.css";
 
+
 * {
   background-color: @background;
   color: @foreground;
 
   border: none;
-  border-radius: 0;
-  min-height: 0;
-  font-family: 'Typestar OCR';
+  border-radius: 8px;
+  font-family: 'CaskaydiaMono Nerd Font Propo';
   font-size: 12px;
+}
+
+tooltip {
+  opacity: 0.9;
+ }
+
+window#waybar {
+  background-color: transparent;
 }
 
 .modules-left {
@@ -19,11 +27,19 @@
   margin-right: 8px;
 }
 
+.modules-center {
+  border-radius: 0;
+  border-left: 1px solid alpha(@foreground, 0.2);
+  border-right: 1px solid alpha(@foreground, 0.2);
+  padding: 0 80px;
+}
+
 #workspaces button {
   all: initial;
   padding: 0 6px;
   margin: 0 1.5px;
   min-width: 9px;
+
 }
 
 #workspaces button.empty {
@@ -31,8 +47,10 @@
 }
 
 #mpris,
-#custom-nightlight,
+#custom-power,
 #custom-clipboard,
+#custom-nightlight,
+#hyprland-window,
 #tray,
 #cpu,
 #battery,
@@ -51,14 +69,16 @@
 }
 
 tooltip {
-  padding: 2px;
+  padding: 0.5px;
 }
 
 #custom-update {
   font-size: 10px;
+  padding: 2px 0 0 0px;
+
 }
 
-#clock {
+#clock, #idle_inhibitor {
   margin-left: 8.75px;
 }
 
@@ -75,6 +95,25 @@ tooltip {
 #custom-screenrecording-indicator.active {
   color: #a55555;
 }
+#window {
+  margin: 8.75px;
+}
+
+#cpu.warning, #memory.warning {
+    color: #f9e2af;
+}
+
+#cpu.critical, #memory.critical {
+    color: #f38ba8;
+}
+
+#custom-idle {
+  padding-left: 10px;
+}
+
+#mpris {
+  padding-right: 10px;
+}
 
 #custom-privacydots {
   padding: 0 7px;
@@ -90,13 +129,3 @@ tooltip {
       -1px  1px 0 #000000,
        1px  1px 0 #000000; */
 }
-
-#cpu.warning, #memory.warning {
-    color: #f9e2af;
-}
-
-#cpu.critical, #memory.critical {
-    color: #f38ba8;
-}
-
-
