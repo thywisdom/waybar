@@ -4,10 +4,21 @@
   "position": "top",
   "spacing": 0,
   "height": 26,
-  "modules-left": ["custom/omarchy", "hyprland/workspaces","custom/nightlight","hyprland/window"],
-  "modules-center": ["clock", "custom/update","custom/idle", "custom/screenrecording-indicator","custom/privacydots"],
+  "modules-left": [
+    "custom/omarchy",
+    "hyprland/workspaces",
+    "custom/nightlight",
+    "hyprland/window",
+  ],
+  "modules-center": [
+    "clock",
+    "custom/update",
+    "custom/idle",
+    "custom/screenrecording-indicator",
+    "custom/privacydots",
+  ],
   "modules-right": [
-  "mpris",
+    "mpris",
     "group/tray-expander",
     "memory",
     "cpu",
@@ -15,74 +26,70 @@
     "network",
     "pulseaudio",
     "battery",
-    "custom/power"
+    "custom/power",
   ],
-  
-//Custom Codes
-  
 
-   "mpris": {
-     "format": "{player_icon}{title} ",
-     "format-paused": "{status_icon} {title}",
+  //Custom Codes
 
-     "player-icons": {
-       "default": "<span foreground='#cba6f7'>󰗃 </span>",
-       "spotify": "<span foreground='#a6e3a1'>󰓇 </span>",
-       "firefox": "<span foreground='#f38ba8'>󰈹 </span>"
-     },
-     "status-icons": {
-       "paused": "<span color='#b4befe'>\u200A\u200A󰏤\u2009\u2009</span>"
-     },
-    
+  "mpris": {
+    "format": "{player_icon}{title} ",
+    "format-paused": "{status_icon} {title}",
+
+    "player-icons": {
+      "default": "<span foreground='#cba6f7'>󰗃 </span>",
+      "spotify": "<span foreground='#a6e3a1'>󰓇 </span>",
+      "firefox": "<span foreground='#f38ba8'>󰈹 </span>",
+    },
+    "status-icons": {
+      "paused": "<span color='#b4befe'>\u200A\u200A󰏤\u2009\u2009</span>",
+    },
+
     "on-scroll-up": "playerctl volume 0.05+",
     "on-scroll-down": "playerctl volume 0.05-",
 
-     "tooltip-format": "Playing: {title} - {artist}",
-     "tooltip-format-paused": "Paused: {title} - {artist}",
-     "min-length": 5,
-     "max-length": 20,
-   },
+    "tooltip-format": "Playing: {title} - {artist}",
+    "tooltip-format-paused": "Paused: {title} - {artist}",
+    "min-length": 5,
+    "max-length": 20,
+  },
 
   //-------------------------------------------MIDDLE SESSION CUSTOM CODE
 
+  "custom/idle": {
+    "format": "󰈉 ",
+    "format-alt": "󰈈 ",
+    "tooltip": true,
+    "on-click": "omarchy-toggle-idle",
+    "return-type": "json",
+  },
 
-    "custom/idle": {
-        "format": "󰈉 ",
-        "format-alt": "󰈈 ",
-        "tooltip": true,
-        "on-click": "omarchy-toggle-idle",
-        "return-type": "json"
-    },
-
-    "custom/privacydots": {
-        "exec": "~/.config/waybar/Scripts/privacydots.sh",
-        "return-type": "json",
-        "interval": 3,
-        "format": "{text}",
-        "tooltip": true,
-        "escape": false,
-        "markup": "pango"
-    },
-
+  "custom/privacydots": {
+    "exec": "~/.config/waybar/Scripts/privacydots.sh",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{text}",
+    "tooltip": true,
+    "escape": false,
+    "markup": "pango",
+  },
 
   //-------------------------------------------RIGHT SESSION CUSTOM CODE
 
   "custom/clipboard": {
     "format": "",
     "tooltip": false,
-    "on-click": "alacritty --class TUI.float -e clipse"
+    "on-click": "walker -m clipboard",
   },
 
-  
   "custom/nightlight": {
     "exec": "current=$(brightnessctl g); max=$(brightnessctl m); percent=$((100 * current / max)); if [ $percent -lt 20 ]; then icon='🌑'; elif [ $percent -lt 40 ]; then icon='🌒'; elif [ $percent -lt 60 ]; then icon='🌓'; elif [ $percent -lt 80 ]; then icon='🌔'; else icon='🌕'; fi; echo '{\"text\":\"'$icon'\",\"tooltip\":\"Brightness: '$percent'%\"}'",
     "return-type": "json",
     "interval": 2,
     "format": "{}",
-    "format-alt": "☄️", 
+    "format-alt": "☄️",
     "on-click": "~/.config/waybar/Scripts/toggle-nightlight",
     "on-scroll-up": "brightnessctl set +2%",
-    "on-scroll-down": "brightnessctl set 1%-"
+    "on-scroll-down": "brightnessctl set 1%-",
   },
   //System information
 
@@ -92,25 +99,23 @@
     "format-alt": " {used:0.1f}G",
     "tooltip-format": "Used: {used:0.1f}G / {total:0.1f}G\nAvail: {avail:0.1f}G\nSwap: {swapUsed:0.1f}G / {swapTotal:0.1f}G",
     "states": {
-        "warning": 70,
-        "critical": 90
-    }
+      "warning": 70,
+      "critical": 90,
+    },
   },
 
   "hyprland/window": {
     "max-length": 20,
-    "format": "{}"
+    "format": "{}",
   },
-
 
   "custom/power": {
     "format": " ",
     "on-click": "omarchy-menu system",
-    "tooltip-format": "Power Menu"
+    "tooltip-format": "Power Menu",
   },
 
-
-// System - defaults
+  // System - defaults
 
   "hyprland/workspaces": {
     "on-click": "activate",
@@ -126,24 +131,24 @@
       "7": "7",
       "8": "8",
       "9": "9",
-      "active": "󰮯"
+      "active": "󰮯",
     },
     "persistent-workspaces": {
       "1": [],
       "2": [],
       "3": [],
       "4": [],
-      "5": []
+      "5": [],
     },
-    "on-scroll-up": "hyprctl dispatch workspace e+1",   // added
-    "on-scroll-down": "hyprctl dispatch workspace e-1",  //added
+    "on-scroll-up": "hyprctl dispatch workspace e+1", // added
+    "on-scroll-down": "hyprctl dispatch workspace e-1", //added
   },
 
   "custom/omarchy": {
     "format": " ",
     "on-click": "omarchy-menu",
     "on-click-right": "omarchy-launch-terminal",
-    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space"
+    "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space",
   },
   "custom/update": {
     "format": "",
@@ -151,7 +156,7 @@
     "on-click": "omarchy-launch-floating-terminal-with-presentation omarchy-update",
     "tooltip-format": "Omarchy update available",
     "signal": 7,
-    "interval": 3600
+    "interval": 3600,
   },
 
   "cpu": {
@@ -160,9 +165,9 @@
     "format-alt": " {avg_frequency}GHz",
     "tooltip-format": "Load: {load}",
     "states": {
-        "warning": 70,
-        "critical": 90
-    }
+      "warning": 70,
+      "critical": 90,
+    },
   },
   "clock": {
     "format": "{:%I:%M %p}",
@@ -178,7 +183,7 @@
         "today": "<span color='#ff6699'><b>{}</b></span>",
       },
     },
-    "on-click-right": "~/.local/share/omarchy/bin/omarchy-launch-floating-terminal-with-presentation omarchy-tz-select"
+    "on-click-right": "~/.local/share/omarchy/bin/omarchy-launch-floating-terminal-with-presentation omarchy-tz-select",
   },
   "network": {
     "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
@@ -191,7 +196,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "interval": 3,
     "spacing": 1,
-    "on-click": "omarchy-launch-wifi"
+    "on-click": "omarchy-launch-wifi",
   },
   "battery": {
     "format": "{capacity}% {icon}",
@@ -200,7 +205,7 @@
     "format-plugged": "",
     "format-icons": {
       "charging": ["󰢜", "󰂆", "󰂇", "󰂈", "󰢝", "󰂉", "󰢞", "󰂊", "󰂋", "󰂅"],
-      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+      "default": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     },
     "format-full": "󰂅",
     "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
@@ -209,15 +214,15 @@
     "on-click": "omarchy-menu power",
     "states": {
       "warning": 20,
-      "critical": 10
-    }
+      "critical": 10,
+    },
   },
   "bluetooth": {
     "format": "",
     "format-disabled": "󰂲",
     "format-connected": "",
     "tooltip-format": "Devices connected: {num_connections}",
-    "on-click": "blueberry"
+    "on-click": "blueberry",
   },
   "pulseaudio": {
     "format": "{icon}",
@@ -227,29 +232,29 @@
     "scroll-step": 5,
     "format-muted": "",
     "format-icons": {
-      "default": ["", "", ""]
-    }
+      "default": ["", "", ""],
+    },
   },
   "group/tray-expander": {
     "orientation": "inherit",
     "drawer": {
       "transition-duration": 600,
-      "children-class": "tray-group-item"
+      "children-class": "tray-group-item",
     },
-    "modules": ["custom/expand-icon", "tray","custom/clipboard"]
+    "modules": ["custom/expand-icon", "tray", "custom/clipboard"],
   },
   "custom/expand-icon": {
     "format": " ",
-    "tooltip": false
+    "tooltip": false,
   },
   "custom/screenrecording-indicator": {
     "on-click": "omarchy-cmd-screenrecord",
     "exec": "$OMARCHY_PATH/default/waybar/indicators/screen-recording.sh",
     "signal": 8,
-    "return-type": "json"
+    "return-type": "json",
   },
   "tray": {
     "icon-size": 12,
-    "spacing": 12
-  }
+    "spacing": 12,
+  },
 }
