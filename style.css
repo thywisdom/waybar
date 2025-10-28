@@ -1,49 +1,45 @@
 @import "../omarchy/current/theme/waybar.css";
 
-
 * {
-  background-color: @background;
-  color: @foreground;
+    background-color: @background;
+    color: @foreground;
 
-  border: none;
-  border-radius: 8px;
-  font-family: 'CaskaydiaMono Nerd Font Propo';
-  font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    font-family: "CaskaydiaMono Nerd Font Propo";
+    font-size: 12px;
 }
 
 tooltip {
-  opacity: 0.9;
- }
+    opacity: 0.9;
+}
 
 window#waybar {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .modules-left {
-  margin-left: 8px;
+    margin-left: 8px;
 }
 
 .modules-right {
-  margin-right: 8px;
+    margin-right: 8px;
 }
 
 .modules-center {
-  border-radius: 0;
-  border-left: 1px solid alpha(@foreground, 0.2);
-  border-right: 1px solid alpha(@foreground, 0.2);
-  padding: 0 80px;
+    border-radius: 0;
+    padding: 0 80px;
 }
 
 #workspaces button {
-  all: initial;
-  padding: 0 6px;
-  margin: 0 1.5px;
-  min-width: 9px;
-
+    all: initial;
+    padding: 0 6px;
+    margin: 0 1.5px;
+    min-width: 9px;
 }
 
 #workspaces button.empty {
-  opacity: 0.5;
+    opacity: 0.5;
 }
 
 #mpris,
@@ -60,71 +56,73 @@ window#waybar {
 #custom-omarchy,
 #custom-screenrecording-indicator,
 #custom-update {
-  min-width: 12px;
-  margin: 0 7.5px;
+    min-width: 12px;
+    margin: 0 7.5px;
 }
 
 #custom-expand-icon {
-  margin-right: 7px;
+    margin-right: 7px;
 }
 
 tooltip {
-  padding: 0.5px;
+    padding: 0.5px;
 }
 
 #custom-update {
-  font-size: 10px;
-  padding: 2px 0 0 0px;
-
+    font-size: 10px;
+    padding: 2px 0 0 0px;
 }
 
-#clock, #idle_inhibitor {
-  margin-left: 8.75px;
+#clock,
+#idle_inhibitor {
+    margin-left: 8.75px;
 }
 
 .hidden {
-  opacity: 0;
+    opacity: 0;
 }
 
 #custom-screenrecording-indicator {
-  min-width: 12px;
-  margin-left: 8.75px;
-  font-size: 10px;
+    min-width: 12px;
+    margin-left: 8.75px;
+    font-size: 10px;
 }
 
 #custom-screenrecording-indicator.active {
-  color: #a55555;
+    color: #a55555;
 }
 #window {
-  margin: 8.75px;
+    margin: 8.75px;
 }
 
-#cpu.warning, #memory.warning {
+#cpu.warning,
+#memory.warning {
     color: #f9e2af;
 }
 
-#cpu.critical, #memory.critical {
+#cpu.critical,
+#memory.critical {
     color: #f38ba8;
 }
 
 #custom-idle {
-  padding-left: 10px;
+    padding-left: 10px;
 }
 
 #mpris {
-  padding-right: 10px;
+    padding-right: 10px;
 }
 
 #custom-privacydots {
-  padding: 0 7px;
-  /* size of the dots */
-  font-size: 9px;           
-  /* space between dots */
-  letter-spacing: 1px;      
-  /* dots colored ring */
-  /* comment/uncomment to enable/disable the colored ring. */
-  /* text-shadow:                    
-      -1px -1px 0 #000000,     
+    padding: 0 7px;
+    /* size of the dots */
+    font-size: 9px;
+    /* space between dots */
+    letter-spacing: 1px;
+    /* dots colored ring */
+    /* comment/uncomment to enable/disable the colored ring. */
+    /* text-shadow:
+      -1px -1px 0 #000000,
        1px -1px 0 #000000,
       -1px  1px 0 #000000,
        1px  1px 0 #000000; */
