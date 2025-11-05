@@ -54,6 +54,7 @@ window#waybar {
 #bluetooth,
 #pulseaudio,
 #custom-omarchy,
+#pulseaudio#microphone,
 #custom-screenrecording-indicator,
 #custom-update {
     min-width: 12px;

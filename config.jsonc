@@ -23,7 +23,7 @@
     "memory",
     "cpu",
     "bluetooth",
-    "network",
+    "network", 
     "pulseaudio",
     "battery",
     "custom/power",
@@ -91,6 +91,20 @@
     "on-scroll-up": "brightnessctl set +2%",
     "on-scroll-down": "brightnessctl set 1%-",
   },
+
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "",
+    "format-source-muted": "",
+    "tooltip": true,
+    "tooltip-format": "Input gain at {volume}%",
+    "on-click": "pamixer --default-source -t",
+    "on-click-right": "alacritty -e bash -c \"wiremix --tab input\"",
+    "on-scroll-up": "pamixer --default-source -i 5",
+    "on-scroll-down": "pamixer --default-source -d 5",
+    "scroll-step": 5,
+  },
+
   //System information
 
   "memory": {
@@ -105,8 +119,27 @@
   },
 
   "hyprland/window": {
-    "max-length": 20,
     "format": "{}",
+    "rewrite": {
+      "\\s*(.*)\\s+": "$1",
+      "\\s*": " ",
+      "(\\d\\. )?(.*)- VLC media player": " $2",
+      "(\\d\\. )?(.*)— Mozilla Firefox": "Firefox",
+      "(\\d\\. )?(.*)- Google Chrome": "Chrome",
+      "(\\d\\. )?(.*)- Brave": "Brave",
+      "(\\d\\. )?(.*)Terminal": "Terminal",
+      "(.*Discord)...(.*).. (.*)": "$3 - $2",
+      "(\\d\\. )?(.*)Discord Popout": "Discord",
+      "(\\d\\. )?(.*)Spotify": "Spotify",
+      "(\\d\\. )?(.*)Spotify Premium": "Spotify",
+      "(\\d\\. )?(.*)ncspot": "Spotify",
+      "(\\d\\. )?(.*)Steam": "Steam",
+      "(\\d\\. )?(.*)Minecraft": "Minecraft",
+      "(.*)[Ll]unar [Cc]lient": "Minecraft",
+      "(\\d\\. )?(.*)Code - OSS": "Code",
+      "Search(.*)": "Search",
+    },
+    "separate-outputs": false,
   },
 
   "custom/power": {
@@ -118,36 +151,44 @@
   // System - defaults
 
   "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
     "on-click": "activate",
-    "format": "{icon}",
+    "format": "{icon} {windows}",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "title<.*YouTube.*>": " ", // Windows whose titles contain "youtube"
+      "class<firefox>": " ", // Windows whose classes are "firefox"
+      "class<alacritty>": " ",
+      "class<foot>": " ",
+      "class<dev.zed.Zed>": " 󰨞",
+      "class<vesktop>": " ",
+      "class<Brave>": " ",
+      "class<org.gnome.Nautilus>": "",
+    },
     "format-icons": {
       "default": "",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "6": "6",
-      "7": "7",
-      "8": "8",
-      "9": "9",
-      "active": "󰮯",
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "active": "󱓻",
     },
     "persistent-workspaces": {
       "1": [],
       "2": [],
-      "3": [],
-      "4": [],
-      "5": [],
     },
-    "on-scroll-up": "hyprctl dispatch workspace e+1", // added
-    "on-scroll-down": "hyprctl dispatch workspace e-1", //added
   },
 
   "custom/omarchy": {
     "format": " ",
     "on-click": "omarchy-menu",
-    "on-click-right": "omarchy-launch-terminal",
+    "on-click-right": "xdg-terminal-exec",
     "tooltip-format": "Omarchy Menu\n\nSuper + Alt + Space",
   },
   "custom/update": {
@@ -226,7 +267,7 @@
   },
   "pulseaudio": {
     "format": "{icon}",
-    "on-click": "$TERMINAL --class=Wiremix -e wiremix",
+    "on-click": "xdg-terminal-exec --app-id=com.omarchy.Wiremix -e wiremix",
     "on-click-right": "pamixer -t",
     "tooltip-format": "Playing at {volume}%",
     "scroll-step": 5,
@@ -241,7 +282,7 @@
       "transition-duration": 600,
       "children-class": "tray-group-item",
     },
-    "modules": ["custom/expand-icon", "tray", "custom/clipboard"],
+    "modules": ["custom/expand-icon", "tray", "custom/clipboard","pulseaudio#microphone"],
   },
   "custom/expand-icon": {
     "format": " ",
