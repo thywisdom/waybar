@@ -54,7 +54,6 @@ window#waybar {
 #bluetooth,
 #pulseaudio,
 #custom-omarchy,
-#pulseaudio#microphone,
 #custom-screenrecording-indicator,
 #custom-update {
     min-width: 12px;
@@ -127,4 +126,11 @@ tooltip {
        1px -1px 0 #000000,
       -1px  1px 0 #000000,
        1px  1px 0 #000000; */
+}
+
+#pulseaudio.microphone {
+    margin-right: 8px;
+    margin-left: 8px;
+    font-size: 11px;
+    font-weight: 900;
 }

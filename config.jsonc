@@ -23,7 +23,7 @@
     "memory",
     "cpu",
     "bluetooth",
-    "network", 
+    "network",
     "pulseaudio",
     "battery",
     "custom/power",
@@ -97,7 +97,7 @@
     "format-source": "",
     "format-source-muted": "",
     "tooltip": true,
-    "tooltip-format": "Input gain at {volume}%",
+    "tooltip-format": "Input gain at {source_volume}%",
     "on-click": "pamixer --default-source -t",
     "on-click-right": "alacritty -e bash -c \"wiremix --tab input\"",
     "on-scroll-up": "pamixer --default-source -i 5",
@@ -154,7 +154,7 @@
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "on-scroll-down": "hyprctl dispatch workspace e-1",
     "on-click": "activate",
-    "format": "{icon} {windows}",
+    "format": "{icon} ", //{windows}",
     "window-rewrite-default": "",
     "window-rewrite": {
       "title<.*YouTube.*>": " ", // Windows whose titles contain "youtube"
@@ -182,6 +182,9 @@
     "persistent-workspaces": {
       "1": [],
       "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
     },
   },
 
@@ -282,7 +285,12 @@
       "transition-duration": 600,
       "children-class": "tray-group-item",
     },
-    "modules": ["custom/expand-icon", "tray", "custom/clipboard","pulseaudio#microphone"],
+    "modules": [
+      "custom/expand-icon",
+      "tray",
+      "custom/clipboard",
+      "pulseaudio#microphone",
+    ],
   },
   "custom/expand-icon": {
     "format": " ",

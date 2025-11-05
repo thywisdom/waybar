@@ -1,0 +1,34 @@
+"hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-click": "activate",
+    "format": "{icon} {windows}",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "title<.*YouTube.*>": " ", // Windows whose titles contain "youtube"
+      "class<firefox>": " ", // Windows whose classes are "firefox"
+      "class<alacritty>": " ",
+      "class<foot>": " ",
+      "class<dev.zed.Zed>": " 󰨞",
+      "class<vesktop>": " ",
+      "class<Brave>": " ",
+      "class<org.gnome.Nautilus>": "",
+    },
+    "format-icons": {
+      "default": "",
+      "1": "一",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "active": "󱓻",
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+    },
+  },
